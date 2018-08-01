@@ -5,6 +5,7 @@
     <classes>
       <class name="com.kyd.testcases.LoginPageTest">
         <methods>
+          <include name="close"/>
           <include name="setup"/>
           <include name="login"/>
         </methods>

@@ -4,9 +4,11 @@ import java.awt.Toolkit;
 
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -22,8 +24,18 @@ public class TestBase {
 	protected LoginPage loginpage;
 	private String stagingurl="https://in.knowyourday.ai/";
 	private String produrl="https://kyd-single.adappt.co.uk/";
+	protected String userrole="normal user";
 	
 	
+	
+	@FindBy(xpath="//input[@name='email']")
+	protected WebElement email_id;
+	
+	@FindBy(xpath="//input[@name='password']")
+	protected WebElement password;
+	
+	@FindBy(id="login")
+	protected WebElement login_button;
 	
 	
 	@BeforeClass
@@ -61,6 +73,11 @@ public class TestBase {
     	driver.manage().window().setSize(screenResolution);
     	loginpage=PageFactory.initElements(driver, LoginPage.class);
     	
+	}
+	
+	
+	public void enter_keys(String keys) {
+		
 	}
 	
 	@AfterClass
